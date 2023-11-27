@@ -1,0 +1,827 @@
+// Start The Gloabl
+$main-color: #1073c0;
+$main-alpha: #dfedf7;
+$text-blue: #0061ad;
+$gray: #b0b0b0;
+$green: #1fb984;
+$space: 15px;
+$duration: 0.3s;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+}
+// Theme
+body.dark {
+  $dark-color: #000000de;
+  $light-color: #ffff;
+
+  background-color: $dark-color;
+
+  header .top {
+    background-color: transparent;
+
+    .navbar-toggler {
+      background-color: $light-color;
+    }
+    .nav-link {
+      color: $light-color;
+    }
+  }
+
+  .products-area {
+    a {
+      .box {
+        background-color: transparent !important;
+      }
+    }
+  }
+
+  .product-info {
+    background-color: transparent !important;
+    box-shadow: 0px 0px 5px white;
+
+    .top {
+      background-color: transparent !important;
+      box-shadow: 0px 0px 5px white;
+    }
+
+    p {
+      color: $light-color !important;
+    }
+  }
+
+  .tools {
+    background-color: transparent !important;
+    .box {
+      i,
+      p {
+        color: $light-color !important;
+      }
+    }
+  }
+
+  .ads {
+    & > div {
+      background-color: transparent !important;
+      box-shadow: 0px 0px 5px white;
+    }
+  }
+
+  input, textarea{
+    background-color: transparent;
+    color: $light-color;
+  }
+  footer {
+    background-color: transparent;
+
+    & > div {
+      .center {
+        ul {
+          a {
+            color: $light-color;
+          }
+        }
+      }
+      .bottom {
+        .right {
+          ul {
+            li {
+              background-color: transparent !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  background-color: #ffff;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $main-color;
+  border-radius: 10px;
+}
+// Start The Aside
+aside {
+  width: 30%;
+  user-select: none;
+
+  @media (max-width: 992px) {
+    & {
+      display: none;
+    }
+  }
+
+  .custom-details {
+    & > h3 {
+      color: $main-color;
+      cursor: pointer;
+
+      i {
+        color: $main-color;
+      }
+    }
+
+    .text {
+      display: none;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: $space;
+      border-bottom: 1px solid silver;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+
+      a {
+        background-color: $main-alpha;
+        color: $text-blue;
+        transition: $duration;
+        grid-column: 1 / 3;
+
+        &:hover {
+          background-color: #cfd5e8;
+        }
+      }
+
+      img,
+      p {
+        display: inline-block;
+        width: 78px;
+        height: 78px;
+        border-radius: 10px;
+        border: 1px solid silver;
+        padding: $space / 3;
+        margin: $space / 3;
+        cursor: pointer;
+        transition: $duration;
+
+        &:hover {
+          border-color: $main-color;
+          color: $main-color;
+        }
+      }
+
+      p {
+        text-align: center;
+        font-size: 17px;
+        font-weight: bold;
+        overflow: hidden;
+        color: $gray;
+      }
+    }
+
+    &.show {
+      .text {
+        display: grid;
+      }
+    }
+  }
+}
+// End The Aside
+// Start The Gloabl
+// Start The Header
+header {
+  .top {
+    background-color: #fff;
+
+    i {
+      color: $gray;
+      margin-right: $space / 2;
+    }
+
+    aside {
+      width: 100%;
+      display: none;
+
+      @media (max-width: 992px) {
+        & {
+          display: block;
+        }
+      }
+
+      .text {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      }
+    }
+  }
+
+  .center {
+    background-color: $main-color;
+
+    & > div {
+      & > img {
+        height: 2.25rem;
+        width: 100px;
+      }
+
+      .tools {
+        @media (max-width: 768px) {
+          & > ul {
+            flex-direction: column !important;
+          }
+        }
+
+        ul {
+          li {
+            & > a,
+            & > i {
+              background-color: $text-blue;
+              padding: 0 ($space / 2);
+              transition: $duration;
+
+              &:hover {
+                opacity: 0.8;
+              }
+
+              i {
+                margin-left: $space / 3;
+              }
+            }
+            & > i {
+              padding: 8px 15px;
+            }
+
+            &.my-form {
+              &.hide {
+                display: none;
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #0000005e;
+              }
+
+              form {
+                width: 400px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                box-shadow: 2px 2px 10px silver;
+
+                @media (max-width: 600px) {
+                  & {
+                    width: 80%;
+                  }
+                }
+
+                & > i[data-closeForm] {
+                  cursor: pointer;
+                  left: 20px;
+                  transition: $duration;
+
+                  &:hover {
+                    transform: rotate(180deg);
+                  }
+                }
+
+                input {
+                  width: 75%;
+                  margin-bottom: $space / 3;
+                  outline: none;
+                  border: 1px solid $main-alpha;
+                  transition: $duration;
+
+                  &:focus {
+                    border-color: $main-color;
+                  }
+                }
+
+                & > p,
+                & > a {
+                  width: fit-content !important;
+                  margin: auto;
+                  color: $main-color;
+                  cursor: pointer;
+                  transition: $duration;
+
+                  &:hover {
+                    color: #81c7f9;
+                  }
+
+                  &.error {
+                    font-size: 13.5px;
+                    margin-bottom: $space / 4;
+                  }
+                }
+
+                // The Password Area
+                & > div {
+                  & > i {
+                    left: 14%;
+                    top: 13px;
+                    transition: $duration;
+                    cursor: pointer;
+
+                    &:hover {
+                      opacity: 0.7;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// End The Header
+// Start The Main Body
+.component {
+  main {
+    width: 65%;
+    order: 1;
+
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+
+    // The Search Area
+    .search {
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+
+        form {
+          width: 100% !important;
+        }
+
+        .add-ads-icon {
+          width: 70% !important;
+        }
+      }
+
+      form {
+        input {
+          outline: none;
+          border: 2px solid $gray;
+          border-left: none;
+          box-shadow: 0px 0px 2px silver;
+          transition: $duration;
+
+          &:hover,
+          &:focus {
+            border-color: $main-color;
+          }
+        }
+
+        .search-icon {
+          background-color: $main-color;
+        }
+      }
+
+      .add-ads-icon {
+        background-color: #feca81;
+        color: #04045b;
+        padding: ($space / 3) ($space / 2);
+        height: fit-content;
+        transition: $duration;
+
+        &:hover {
+          background-color: #fdb651;
+        }
+      }
+    }
+
+    // The Categories
+    .categories {
+      .box {
+        min-width: fit-content;
+        min-height: 70px;
+        transition: $duration;
+        user-select: none;
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+          background-color: $main-alpha;
+
+          i,
+          p {
+            color: $main-color;
+          }
+        }
+
+        i,
+        p {
+          color: $gray;
+        }
+
+        i {
+          font-size: 16px;
+        }
+      }
+    }
+
+    // Start The Product Area
+    .products-area {
+      a {
+        text-decoration: none;
+      }
+      .box {
+        border-bottom: 1px solid silver;
+
+        &:nth-of-type(odd) {
+          background-color: #f7fbfa;
+        }
+
+        figure {
+          width: 15%;
+          height: 150px;
+
+          @media (max-width: 992px) {
+            & {
+              width: 40%;
+            }
+          }
+        }
+
+        .text {
+          width: 85%;
+
+          @media (max-width: 992px) {
+            & {
+              width: 60%;
+            }
+          }
+
+          .top {
+            h3 {
+              color: $green;
+            }
+          }
+
+          .bottom {
+            @media (max-width: 600px) {
+              & {
+                flex-direction: column;
+              }
+            }
+
+            .right {
+              .like,
+              .comment {
+                p,
+                i {
+                  color: $gray;
+                  font-size: 0.8rem;
+                }
+              }
+            }
+
+            .left {
+              p {
+                color: $gray;
+                font-size: 0.8rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    // End The Product Area
+  }
+
+  aside {
+    width: 35%;
+
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+}
+// End The Main Body
+// Start The Product Page Style
+.products-page {
+  & > div {
+    @media (max-width: 992px) {
+      & {
+        flex-direction: column;
+
+        .right,
+        .left {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+  .right {
+    & > i {
+      color: $main-color;
+      cursor: pointer;
+    }
+
+    .product-info {
+      .top {
+        background-color: #f2f4fa;
+
+        h3 {
+          color: $green;
+        }
+
+        .center {
+          width: 50%;
+
+          @media (max-width: 600px) {
+            & {
+              width: 100%;
+            }
+          }
+
+          p:first-of-type {
+            color: $main-color;
+          }
+        }
+
+        .bottom {
+          img {
+            width: 40px;
+            height: 40px;
+          }
+
+          button {
+            background-color: $main-color;
+          }
+        }
+      }
+
+      .description {
+        p {
+          word-wrap: break-word;
+        }
+      }
+
+      & > .bottom {
+        form {
+          button {
+            min-width: 100px;
+          }
+        }
+      }
+    }
+
+    // The Tools Style
+    .tools {
+      @media (max-width: 500px) {
+        & {
+          flex-direction: column;
+        }
+      }
+
+      .box {
+        transition: $duration;
+
+        &:hover {
+          background-color: $main-alpha;
+        }
+      }
+    }
+
+    // The Alert
+    .my-alert {
+      img {
+        max-width: 80px;
+      }
+
+      p {
+        font-size: 15px;
+        color: $main-color;
+      }
+    }
+
+    // Add a Comment Corner
+    .add-comment {
+      form {
+        textarea {
+          height: 170px;
+          border: 1px solid $main-alpha;
+          outline: none;
+          resize: none;
+          transition: $duration;
+
+          &:focus {
+            border-color: $main-color;
+          }
+        }
+
+        button {
+          min-width: 100px;
+        }
+      }
+    }
+  }
+
+  .left {
+    & > h3 {
+      color: $main-color;
+    }
+
+    .ads {
+      .ad {
+        h4 {
+          width: fit-content;
+          background-color: $main-alpha;
+          padding: ($space / 3) $space;
+        }
+
+        .imgs {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(60px, 1fr));
+          gap: $space / 3;
+
+          img {
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+    }
+  }
+}
+// End The Product Page Style
+// Start The Profile Page Style
+.profile-page {
+  .top-section {
+    & > div {
+      display: grid;
+      place-content: center;
+
+      form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $space;
+
+        .box {
+          background-color: $main-alpha;
+          width: 100%;
+          min-height: 150px;
+          display: grid;
+          place-content: center;
+          position: relative;
+
+          input {
+            border: 1px solid $main-color;
+            outline: none;
+            width: 90%;
+            margin: auto;
+            text-align: center;
+
+            background-color: transparent;
+            border-color: transparent;
+            color: $gray;
+
+            &.edit {
+              background-color: white;
+              border-color: $main-color;
+              color: black;
+            }
+          }
+
+          i.my-pen {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: $main-color;
+            cursor: pointer;
+            transition: $duration;
+
+            &:hover {
+              color: $gray;
+            }
+          }
+        }
+
+        & > button {
+          grid-column: 1 / 3;
+        }
+      }
+    }
+  }
+
+  // Add a New Product
+  .add-new-prod {
+    @media (max-width: 400px) {
+      & {
+        max-width: 85%;
+        margin: auto;
+      }
+    }
+
+    form {
+      @media (max-width: 400px) {
+        & {
+          width: 100%;
+        }
+      }
+
+      .box {
+        input,
+        textarea {
+          border: 1px solid $gray;
+          outline: none;
+          transition: $duration;
+
+          &:focus {
+            border-color: $main-color;
+          }
+        }
+
+        input {
+          min-height: 45px;
+        }
+        textarea {
+          min-height: 110px;
+          resize: none;
+        }
+      }
+    }
+  }
+}
+// End The Profile Page Style
+// Start The Footer
+footer {
+  background-color: #f2f4fa;
+  border-top: 1px solid silver;
+
+  .center {
+    border: 1px solid silver;
+    border-left: none;
+    border-right: none;
+
+    @media (max-width: 550px) {
+      & {
+        flex-direction: column;
+      }
+    }
+
+    ul {
+      li {
+        a {
+          color: $main-color;
+          transition: $duration;
+
+          &:hover {
+            i {
+              color: $main-color;
+            }
+
+            p {
+              border-bottom-color: $main-color;
+            }
+          }
+
+          i {
+            color: $gray;
+            transition: $duration;
+          }
+
+          p {
+            border-bottom: 1px solid transparent;
+            transition: $duration;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom {
+    .right {
+      ul {
+        li {
+          transition: $duration;
+
+          a {
+            transition: $duration;
+          }
+
+          &:hover {
+            background-color: $main-color !important;
+
+            a {
+              color: $main-alpha;
+            }
+          }
+        }
+      }
+    }
+
+    .left {
+      p {
+        color: gray;
+        font-size: 16px;
+      }
+    }
+  }
+}
+// End The Footer
